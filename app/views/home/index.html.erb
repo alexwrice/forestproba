@@ -1,2 +1,21 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% unless user_signed_in? %> 
+   <h1>Welcome to Forest</h1> 
+   <p>File sharing web application you can't ignore.</p> 
+     
+<% else %> 
+  
+   <div class="document_list_header"> 
+       <div class="file_name_header">File Name</div> 
+       <div class="file_size_header">Size</div> 
+       <div class="file_last_updated_header">Modified</div> 
+   </div> 
+   <div class="document_list"> 
+       <% @documents.each do |document| %> 
+           <div class="document_details"> 
+               <div class="file_name"><%= link_to document.file_name, download_url(document) %></div> 
+               <div class="file_size"><%= document.uploaded_file_file_size %></div> 
+               <div class="file_last_updated"><%= document.uploaded_file_updated_at %></div> 
+           </div> 
+       <% end %> 
+   </div> 
+<% end %>
