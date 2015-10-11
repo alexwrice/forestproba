@@ -15,6 +15,18 @@ class DocumentsController < ApplicationController
     @documents = current_user.documents.find(params[:id])
   end
 
+  #this action will let the users download the files (after a simple authorization check) 
+  def get 
+    document = current_user.documents.find_by_id(params[:id]) 
+
+    if document 
+     send_file document.uploaded_file.path, :type => document.uploaded_file_content_type 
+   else
+    flash[:error] = "You're trying to acces other people's files"
+    redirect_to documents_path 
+  end
+end
+
   # GET /documents/new
   def new
     #@document = Document.new
@@ -80,4 +92,4 @@ class DocumentsController < ApplicationController
       params.require(:document).permit(:user_id)
       params.require(:document).permit(:uploaded_file)
     end
-end
+  end
