@@ -6,7 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
-
+*.pdf
+*.png
 *.jpeg
 *.jpg
 # Ignore all logfiles and tempfiles.

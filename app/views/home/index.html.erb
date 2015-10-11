@@ -3,7 +3,12 @@
    <p>File sharing web application you can't ignore.</p> 
      
 <% else %> 
-  
+	<div id="menu"> 
+		<ul id= "top_menu">     
+			<li><%= link_to "Upload", new_document_path %></li> 
+		</ul> 
+	</div> 
+
    <div class="document_list_header"> 
        <div class="file_name_header">File Name</div> 
        <div class="file_size_header">Size</div> 
