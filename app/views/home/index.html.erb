@@ -13,7 +13,7 @@
        <% @documents.each do |document| %> 
            <div class="document_details"> 
                <div class="file_name"><%= link_to document.file_name, download_url(document) %></div> 
-               <div class="file_size"><%= document.uploaded_file_file_size %></div> 
+               <div class="file_size"><%= number_to_human_size(document.file_size, :precision => 2) %></div> 
                <div class="file_last_updated"><%= document.uploaded_file_updated_at %></div> 
            </div> 
        <% end %> 
