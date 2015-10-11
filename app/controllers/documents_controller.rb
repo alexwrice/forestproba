@@ -73,7 +73,7 @@ end
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
-    @document = current_user.documents.find(params[:id])
+    #@document = current_user.documents.find(params[:id])
     @document.destroy
     respond_to do |format|
       format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
