@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011160450) do
+ActiveRecord::Schema.define(version: 20151013171436) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "user_id",                    limit: 4
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20151011160450) do
   end
 
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
+
+  create_table "folders", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "parent_id",  limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "folders", ["parent_id"], name: "index_folders_on_parent_id", using: :btree
+  add_index "folders", ["user_id"], name: "index_folders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

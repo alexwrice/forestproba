@@ -75,6 +75,7 @@ end
   def destroy
     #@document = current_user.documents.find(params[:id])
     @document.destroy
+    
     respond_to do |format|
       format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
       format.json { head :no_content }

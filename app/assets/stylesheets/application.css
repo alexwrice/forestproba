@@ -18,6 +18,30 @@ body {
   font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif; 
   font-size: 14px; 
 } 
+
+.folder  { 
+    background: url("folder.png") no-repeat scroll left center transparent; 
+} 
+  
+.file { 
+    background:url("file.png") no-repeat scroll left center transparent; 
+} 
+.folder.document_details:hover, .shared_folder.document_details:hover, .file.document_details:hover  { 
+    border:1px solid #DFDFDF; 
+} 
+.folder.document_details:hover  { 
+    background:url("../images/folder.png") no-repeat scroll left center #EFEFEF; 
+} 
+.shared_folder  { 
+    background:url("../images/shared_folder.png") no-repeat scroll left center transparent; 
+} 
+.shared_folder.document_details:hover  { 
+    background:url("../images/shared_folder.png") no-repeat scroll left center #EFEFEF; 
+} 
+.file.document_details:hover  { 
+    background:url("../images/file.png") no-repeat scroll left center #EFEFEF; 
+}
+
 #menu { 
     width:800px; 
     padding:0 20px; 
