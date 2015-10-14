@@ -19,6 +19,14 @@ body {
   font-size: 14px; 
 } 
 
+.breadcrumbs { 
+   margin:10px 0; 
+   font-weight:bold; 
+} 
+.breadcrumbs a { 
+   color:#1D96EF; 
+   text-decoration:none; 
+}
 .folder  { 
     background: url("folder.png") no-repeat scroll left center transparent; 
 } 

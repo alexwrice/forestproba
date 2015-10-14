@@ -16,8 +16,17 @@ class FoldersController < ApplicationController
 
   # GET /folders/new
   def new
-    @folder = current_user.folders.new
-  end
+    @folder = current_user.folders.new     
+   #if there is "folder_id" param, we know that we are under a folder, thus, we will essentially create a subfolder 
+   if params[:folder_id] #if we want to create a folder inside another folder 
+
+     #we still need to set the @current_folder to make the buttons working fine 
+     @current_folder = current_user.folders.find(params[:folder_id]) 
+
+     #then we make sure the folder we are creating has a parent folder which is the @current_folder 
+     @folder.parent_id = @current_folder.id 
+   end
+ end
 
   # GET /folders/1/edit
   def edit
@@ -26,19 +35,23 @@ class FoldersController < ApplicationController
 
   # POST /folders
   # POST /folders.json
-  def create
-    @folder = current_user.folders.create(folder_params)
+  def create 
+   #@folder = current_user.folders.new(params[:folder]) 
+    @folder = current_user.folders.new(folder_params) 
 
-    respond_to do |format|
-      if @folder.save
-        format.html { redirect_to @folder, notice: 'Folder was successfully created.' }
-        format.json { render :show, status: :created, location: @folder }
-      else
-        format.html { render :new }
-        format.json { render json: @folder.errors, status: :unprocessable_entity }
-      end
+   if @folder.save 
+    flash[:notice] = "Successfully created folder."
+
+    if @folder.parent #checking if we have a parent folder on this one 
+      redirect_to browse_path(@folder.parent)  #then we redirect to the parent folder 
+    else
+      redirect_to root_url #if not, redirect back to home page 
     end
+  else
+    render :action => 'new'
   end
+end
+
 
   # PATCH/PUT /folders/1
   # PATCH/PUT /folders/1.json
@@ -76,4 +89,4 @@ class FoldersController < ApplicationController
     def folder_params
       params.require(:folder).permit(:name, :parent_id, :user_id)
     end
-end
+  end

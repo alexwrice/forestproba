@@ -92,5 +92,6 @@ end
     def document_params
       params.require(:document).permit(:user_id)
       params.require(:document).permit(:uploaded_file)
+      params.require(:document).permit(:folder_id)
     end
   end
