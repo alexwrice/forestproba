@@ -2,6 +2,8 @@ class HomeController < ApplicationController
 	def index
 		if user_signed_in? 
 			#show only root folders (which have no parent folders) 
+		    @clasificacions = current_user.folders.roots  
+
 		    @folders = current_user.folders.roots  
 		       
 		    #show only root files which has no "folder_id" 
@@ -13,7 +15,8 @@ class HomeController < ApplicationController
 	def browse 
 	    #get the folders owned/created by the current_user 
 	    @current_folder = current_user.folders.find(params[:folder_id])   
-	  
+	  	@clasificacions = current_user.folders.roots  
+
 	    if @current_folder
 	    
 	      #getting the folders which are inside this @current_folder 
