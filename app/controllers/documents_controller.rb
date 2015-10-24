@@ -30,7 +30,15 @@ end
   # GET /documents/new
   def new
     #@document = Document.new
-    @document = current_user.documents.new
+    @document = current_user.documents.build
+    if params[:folder_id] #We want to upload a file inside
+      @current_folder = @current_user.folders.find(params[:folder_id])
+      @document.folder_id = @current_folder.id
+
+
+
+
+    end
   end
 
   # GET /documents/1/edit
@@ -42,16 +50,17 @@ end
   # POST /documents.json
   def create
     #@document = Document.new(document_params)
-    @document = current_user.documents.create(document_params)
+    @document = current_user.documents.build(document_params)
+    if @document.save
+      flash[:notice] = "Succesfully uploaded the file"
 
-    respond_to do |format|
-      if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
-        format.json { render :show, status: :created, location: @document }
+      if @document.folder
+        redirect_to browse_path(@document.folder)
       else
-        format.html { render :new }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
+        redirect_to root_url
       end
+    else
+      render :action => 'new'
     end
   end
 
@@ -92,6 +101,8 @@ end
     def document_params
       params.require(:document).permit(:user_id)
       params.require(:document).permit(:uploaded_file)
-      params.require(:document).permit(:folder_id)
+      
+      #AIXO DONA PROBLEMES
+      #params.require(:document).permit(:folder_id)
     end
   end

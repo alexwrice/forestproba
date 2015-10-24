@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   match "browse/:folder_id" => "home#browse", :via => [:get], :as => "browse"
   #for creating folders insiide another folder 
   match "browse/:folder_id/new_folder" => "folders#new", :via => [:get], :as => "new_sub_folder"
+  #for uploading files to folders 
+  match "browse/:folder_id/new_file" => "documents#new", :via => [:get], :as => "new_sub_file"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
