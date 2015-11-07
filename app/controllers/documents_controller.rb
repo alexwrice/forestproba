@@ -20,12 +20,12 @@ class DocumentsController < ApplicationController
     document = current_user.documents.find_by_id(params[:id]) 
 
     if document 
-     send_file document.uploaded_file.path, :type => document.uploaded_file_content_type 
-   else
-    flash[:error] = "You're trying to acces other people's files"
-    redirect_to documents_path 
+       send_file document.uploaded_file.path, :type => document.uploaded_file_content_type 
+     else
+      flash[:error] = "You're trying to acces other people's files"
+      redirect_to documents_path 
+    end
   end
-end
 
   # GET /documents/new
   def new
@@ -34,10 +34,6 @@ end
     if params[:folder_id] #We want to upload a file inside
       @current_folder = @current_user.folders.find(params[:folder_id])
       @document.folder_id = @current_folder.id
-
-
-
-
     end
   end
 
@@ -99,10 +95,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:user_id)
-      params.require(:document).permit(:uploaded_file)
-      
+      params.require(:document).permit(:user_id, :uploaded_file, :folder_id)
       #AIXO DONA PROBLEMES
-      #params.require(:document).permit(:folder_id)
     end
-  end
+end
