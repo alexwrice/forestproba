@@ -77,13 +77,19 @@ class DocumentsController < ApplicationController
 
   # DELETE /documents/1
   # DELETE /documents/1.json
-  def destroy
-    #@document = current_user.documents.find(params[:id])
-    @document.destroy
+
+
+  def destroy 
+    @document = current_user.documents.find(params[:id]) 
+    @parent_folder = @document.folder #grabbing the parent folder before deleting the record 
+    @document.destroy 
+    flash[:notice] = "Successfully deleted the file."
     
-    respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
-      format.json { head :no_content }
+    #redirect to a relevant path depending on the parent folder 
+    if @parent_folder
+     redirect_to browse_path(@parent_folder) 
+    else
+     redirect_to root_url 
     end
   end
 
@@ -96,6 +102,5 @@ class DocumentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
       params.require(:document).permit(:user_id, :uploaded_file, :folder_id)
-      #AIXO DONA PROBLEMES
     end
 end

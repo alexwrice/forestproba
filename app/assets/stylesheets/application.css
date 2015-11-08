@@ -19,6 +19,33 @@ body {
   font-size: 14px; 
 } 
 
+.actions { 
+    float:right; 
+    font-size:11px; 
+} 
+.share, .rename, .download, .delete{ 
+    float:left;  
+} 
+.document_details .share a,.document_details .rename a,.document_details .download a,.document_details .delete a{ 
+    border: 1px solid #CFE9FF; 
+    font-size: 11px; 
+    margin-left: 5px; 
+    padding: 0 2px; 
+} 
+.document_details .share a:hover,.document_details .rename a:hover,.document_details .download a:hover,.document_details .delete a:hover{ 
+    border:1px solid #8FCDFF; 
+} 
+  
+.document_details .delete a{ 
+    color:#BF0B12 !important; 
+    border:1px solid #FFCFD1; 
+} 
+  
+.document_details .delete a:hover{ 
+    color:#BF0B12; 
+    border:1px solid #FF8F93; 
+}
+
 .breadcrumbs { 
    margin:10px 0; 
    font-weight:bold; 

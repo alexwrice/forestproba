@@ -11,10 +11,13 @@ class HomeController < ApplicationController
 		end
 	end
 
+	
+
 	#this action is for viewing folders 
 	def browse 
 	    #get the folders owned/created by the current_user 
-	    @current_folder = current_user.folders.find(params[:folder_id])   
+	    @current_folder = current_user.folders.find(params[:folder_id])  
+	    # 
 	  	@clasificacions = current_user.folders.roots  
 
 	    if @current_folder
