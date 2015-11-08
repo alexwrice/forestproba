@@ -10,6 +10,7 @@
 *.png
 *.jpeg
 *.jpg
+*.docx
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
