@@ -95,6 +95,9 @@ body {
   
   
 } 
+#top_menu{
+  float:right;
+}
 #menu ul li a, #menu ul li a:visited{ 
     display:block; 
     padding:0 15px; 

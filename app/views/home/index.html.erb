@@ -4,6 +4,11 @@
 
 <% else %> 
 <div id="menu"> 
+	<ul id= "top_menu_clasificacions">    
+		<% @clasificacions.each do |clasificacio| %>
+			<li><%= link_to clasificacio.name, browse_path(clasificacio) %></li> 
+		<% end %>
+	</ul> 
 	<ul id= "top_menu">     
 		<% if @current_folder %> 
 		<li><%= link_to "Upload", new_sub_file_path(@current_folder) %></li> 
@@ -14,18 +19,7 @@
 		<% end %> 
 
 	</ul>
-	<ul id= "top_menu">     
 
-
-		<% @clasificacions.each do |clasificacio| %>
-
-		<li><%= link_to clasificacio.name, browse_path(clasificacio) %></li> 
-
-		<% end %>
-
-
-
-	</ul> 
 </div> 
 
 <%= render :partial => 'breadcrumbs' %>
