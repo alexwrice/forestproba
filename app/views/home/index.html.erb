@@ -41,7 +41,16 @@
 	<!-- Folders -->
 	<% @folders.each do |folder| %> 
 	<div class="document_details folder"> 
-		<div class="file_name"><%= link_to folder.name, browse_path(folder) %></div> 
+		<div class="file_name"><%= 
+
+
+		if @current_folder
+			link_to folder.name, browse_path(folder, :f => @f) 
+		else
+			link_to folder.name, browse_path(folder)
+		end
+
+		%></div> 
 		<div class="file_size">-</div> 
 		<div class="file_last_updated">-</div> 
 		<div class="actions"> 
