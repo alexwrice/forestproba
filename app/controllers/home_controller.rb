@@ -7,7 +7,8 @@ class HomeController < ApplicationController
 		    @folders = current_user.folders.roots  
 		       
 		    #show only root files which has no "folder_id" 
-		    @documents = current_user.documents.where("folder_id is NULL").order("uploaded_file_file_name desc")    
+		    # @documents = current_user.documents.where("folder_ids is NULL").order("uploaded_file_file_name desc")   
+		    @documents = current_user.documents 
 		end
 	end
 
@@ -35,6 +36,12 @@ class HomeController < ApplicationController
 	    
 	      #getting the folders which are inside this @current_folder 
 	      @folders = @current_folder.children 
+
+	      #ITERAR PELS NENS i deixar només els que tenen la variable del folder
+         #
+			#           ESTIC AQUI
+         #
+	      #
 	  
 	      #We need to fix this to show files under a specific folder if we are viewing that folder 
 	      @documents = @current_folder.documents.order("uploaded_file_file_name desc") 

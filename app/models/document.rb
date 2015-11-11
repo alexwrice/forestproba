@@ -1,6 +1,6 @@
 class Document < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :folder
+	has_and_belongs_to_many :folders
 
 	#set up "uploaded_file" field as attached_file (using Paperclip) 
 	has_attached_file :uploaded_file, :url => "/documents/get/:id", :path => ":Rails_root/documents/:id/:basename.:extension"

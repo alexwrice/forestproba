@@ -33,7 +33,9 @@ class DocumentsController < ApplicationController
     @document = current_user.documents.build
     if params[:folder_id] #We want to upload a file inside
       @current_folder = @current_user.folders.find(params[:folder_id])
-      @document.folder_id = @current_folder.id
+      # @document.folder_id = @current_folder.id
+      @document.folders << @current_folder
+      @document.save
     end
   end
 
@@ -47,11 +49,14 @@ class DocumentsController < ApplicationController
   def create
     #@document = Document.new(document_params)
     @document = current_user.documents.build(document_params)
+    @current_folder = @current_user.folders.find(1)
+    @current_folder.documents << @document
+    @current_folder.save
     if @document.save
       flash[:notice] = "Succesfully uploaded the file"
 
-      if @document.folder
-        redirect_to browse_path(@document.folder)
+      if @document.folders
+        redirect_to browse_path(1)
       else
         redirect_to root_url
       end
@@ -101,6 +106,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:user_id, :uploaded_file, :folder_id)
+      params.require(:document).permit(:user_id, :uploaded_file)
     end
 end
