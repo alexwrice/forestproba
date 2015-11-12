@@ -1,14 +1,14 @@
 <%= form_for @document, html: {multipart: true} do |f| %> 
-  <%= f.error_messages %> 
-    <p> 
-        <%= f.label :uploaded_file, "File" %><br /> 
-        <%= f.file_field :uploaded_file %> 
-      </p> 
-	 <!-- MIRAR COM PASSAR AIXÓ -->
 
-	 <%= f.collection_select :folder_ids, current_user.folders.all, :id, :name, {}, 
-	   {:multiple => true, class: 'select2'} %>
+	<%= f.error_messages %> 
+	<p> 
+		<%= f.label :uploaded_file, "File" %><br /> 
+		<%= f.file_field :uploaded_file %> 
+	</p> 
 
-	   <p><%= f.submit "Upload" %></p> 
+	<%= f.collection_select :folder_ids, current_user.folders.all, :id, :name, {}, 
+	{:multiple => true, class: 'select2'} %>
+
+	<p><%= f.submit "Upload" %></p> 
 
 <% end %>

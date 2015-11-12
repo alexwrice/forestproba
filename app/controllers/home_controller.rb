@@ -21,16 +21,20 @@ class HomeController < ApplicationController
 
 	  	@f = params[:f]
 	  	if @f
+
 	  		#GUARDAR NOMÉS LA ÚLTIMA CARPETA D'UN MATEIX ARBRE
 	  		if current_user.folders.find(@f.last) == @current_folder.parent
 	  			@f.pop
+	  		end
+
+	  		#Torna enrere
+	  		if @f.include?("#{@current_folder.id}")
+	  			@f.pop(@f.length-@f.index("#{@current_folder.id}")) 
 	  		end
 	  		@f.push(@current_folder.id)
 	  	else
 	  		@f=[@current_folder.id]
 	  	end
-
-
 
 	    if @current_folder
 	    
@@ -45,7 +49,8 @@ class HomeController < ApplicationController
 	  
 	      #We need to fix this to show files under a specific folder if we are viewing that folder 
 	      @documents = @current_folder.documents.order("uploaded_file_file_name desc") 
-	  
+	 
+
 	      render :action => "index"
 	    else
 	      flash[:error] = "Don't be cheeky! Mind your own folders!"

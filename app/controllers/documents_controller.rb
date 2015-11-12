@@ -29,14 +29,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    #@document = Document.new
     @document = current_user.documents.build
-    if params[:folder_id] #We want to upload a file inside
-      @current_folder = @current_user.folders.find(params[:folder_id])
-      # @document.folder_id = @current_folder.id
-      @document.folders << @current_folder
-      @document.save
-    end
   end
 
   # GET /documents/1/edit
@@ -47,20 +40,7 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    #@document = Document.new(document_params)
     @document = current_user.documents.build(document_params)
-
-    puts "------------ FOLDER_IDS --------------"
-    puts @document.folder_ids
-
-
-    @document.folder_ids.each do |id| 
-      @current_folder = @current_user.folders.find(id)
-      @current_folder.documents << @document
-      @current_folder.save
-    end
-
-
 
     if @document.save
       flash[:notice] = "Succesfully uploaded the file"
@@ -96,13 +76,12 @@ class DocumentsController < ApplicationController
 
   def destroy 
     @document = current_user.documents.find(params[:id]) 
-    @parent_folder = @document.folder #grabbing the parent folder before deleting the record 
     @document.destroy 
     flash[:notice] = "Successfully deleted the file."
     
     #redirect to a relevant path depending on the parent folder 
-    if @parent_folder
-     redirect_to browse_path(@parent_folder) 
+    if params[:folder_id]
+     redirect_to browse_path(params[:folder_id]) 
     else
      redirect_to root_url 
     end
