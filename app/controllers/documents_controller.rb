@@ -49,9 +49,19 @@ class DocumentsController < ApplicationController
   def create
     #@document = Document.new(document_params)
     @document = current_user.documents.build(document_params)
-    @current_folder = @current_user.folders.find(1)
-    @current_folder.documents << @document
-    @current_folder.save
+
+    puts "------------ FOLDER_IDS --------------"
+    puts @document.folder_ids
+
+
+    @document.folder_ids.each do |id| 
+      @current_folder = @current_user.folders.find(id)
+      @current_folder.documents << @document
+      @current_folder.save
+    end
+
+
+
     if @document.save
       flash[:notice] = "Succesfully uploaded the file"
 
@@ -106,6 +116,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:user_id, :uploaded_file)
+      params.require(:document).permit(:user_id, :uploaded_file, :folder_ids => [])
     end
 end
