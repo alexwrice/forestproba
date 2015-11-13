@@ -1,9 +1,51 @@
 <%= form_for @document, html: {multipart: true} do |f| %> 
-  <%= f.error_messages %> 
-    <p> 
-        <%= f.label :uploaded_file, "File" %><br /> 
-        <%= f.file_field :uploaded_file %> 
-      </p> 
-      <%= f.hidden_field :folder_id %> 
-  <p><%= f.submit "Upload" %></p> 
+
+	<%= f.error_messages %> 
+	<p class="full_width"> 
+		<%= f.label :uploaded_file, "File" %><br /> 
+		<%= f.file_field :uploaded_file %> 
+	</p> 
+
+	<div class = "selectors">
+	<% current_user.folders.roots.each do |folder| %>
+
+		<div class="tree_selector">
+			<div class ="title">
+			<h4><%= folder.name %></h4>
+
+			</div>
+			
+			<!-- Fer un array personalitzat -->
+			<%
+				folders_on_tree = []
+
+
+				folder.traverse { |child| 
+
+					name = ""
+
+					child.ancestors.each do |ancestor|
+						name += "--"
+					end
+					name += child.name
+
+					folders_on_tree.push([name, child.id])
+
+
+				}
+
+
+
+
+			%>
+
+			<%= f.select :folder_ids, folders_on_tree, {}, {:multiple => true, class: 'select2'} %>
+
+	</div>
+
+	<% end %>
+	</div>
+
+	<p class="full_width"><%= f.submit "Upload" %></p> 
+
 <% end %>

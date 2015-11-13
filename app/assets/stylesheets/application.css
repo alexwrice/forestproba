@@ -19,6 +19,31 @@ body {
   font-size: 14px; 
 } 
 
+.tree_selector {
+    float: left;
+}
+
+.selectors{
+  padding: 10px;
+  margin: auto;
+}
+
+
+p.full_width{
+  width: 100px;
+}
+
+.tree_selector {
+    float: left;
+    padding: 0px 10px;
+    margin: 0px 10px;
+}
+
+select#document_folder_ids {
+    width: 200px;
+    height: 150px;
+}
+
 .actions { 
     float:right; 
     font-size:11px; 
@@ -95,6 +120,9 @@ body {
   
   
 } 
+#top_menu{
+  float:right;
+}
 #menu ul li a, #menu ul li a:visited{ 
     display:block; 
     padding:0 15px; 

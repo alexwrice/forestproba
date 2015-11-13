@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014125954) do
+ActiveRecord::Schema.define(version: 20151111120652) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "user_id",                    limit: 4
@@ -21,11 +21,17 @@ ActiveRecord::Schema.define(version: 20151014125954) do
     t.string   "uploaded_file_content_type", limit: 255
     t.integer  "uploaded_file_file_size",    limit: 4
     t.datetime "uploaded_file_updated_at"
-    t.integer  "folder_id",                  limit: 4
   end
 
-  add_index "documents", ["folder_id"], name: "index_documents_on_folder_id", using: :btree
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
+
+  create_table "documents_folders", id: false, force: :cascade do |t|
+    t.integer "document_id", limit: 4
+    t.integer "folder_id",   limit: 4
+  end
+
+  add_index "documents_folders", ["document_id"], name: "index_documents_folders_on_document_id", using: :btree
+  add_index "documents_folders", ["folder_id"], name: "index_documents_folders_on_folder_id", using: :btree
 
   create_table "folders", force: :cascade do |t|
     t.string   "name",       limit: 255

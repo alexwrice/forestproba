@@ -29,12 +29,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    #@document = Document.new
     @document = current_user.documents.build
-    if params[:folder_id] #We want to upload a file inside
-      @current_folder = @current_user.folders.find(params[:folder_id])
-      @document.folder_id = @current_folder.id
-    end
   end
 
   # GET /documents/1/edit
@@ -45,13 +40,34 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    #@document = Document.new(document_params)
     @document = current_user.documents.build(document_params)
+
+    #ALGORITMO
+    #para añadir ancestros de carpetas
+
+    ids_que_faltan = []
+    #buscamos los que faltan
+    @document.folder_ids.each do |id|
+      current_user.folders.find(id).ancestors.reverse.each do |folder| 
+        ids_que_faltan.push(folder.id)
+      end
+    end
+    ids_que_faltan.uniq
+
+    #añadimos los que faltan
+    #esto realmente sobra si el usuario sólo selecciona los últimos àrboles
+    ids_que_faltan.each do |id|
+      @document.folders << current_user.folders.find(id)
+    end
+
+
+
+
     if @document.save
       flash[:notice] = "Succesfully uploaded the file"
 
-      if @document.folder
-        redirect_to browse_path(@document.folder)
+      if @document.folders
+        redirect_to browse_path(1)
       else
         redirect_to root_url
       end
@@ -81,13 +97,12 @@ class DocumentsController < ApplicationController
 
   def destroy 
     @document = current_user.documents.find(params[:id]) 
-    @parent_folder = @document.folder #grabbing the parent folder before deleting the record 
     @document.destroy 
     flash[:notice] = "Successfully deleted the file."
     
     #redirect to a relevant path depending on the parent folder 
-    if @parent_folder
-     redirect_to browse_path(@parent_folder) 
+    if params[:folder_id]
+     redirect_to browse_path(params[:folder_id]) 
     else
      redirect_to root_url 
     end
@@ -101,6 +116,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:user_id, :uploaded_file, :folder_id)
+      params.require(:document).permit(:user_id, :uploaded_file, :folder_ids => [])
     end
 end

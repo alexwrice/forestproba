@@ -5,8 +5,8 @@
 <%= render 'form' %> 
 
 <p>
-	<% if @document.folder %>
-	<%= link_to "Back to '#{@document.folder.name}' Folder", browse_path(@document.folder) %>
+	<% if params[:folder_id] %>
+	<%= link_to "Back to  Folder", browse_path(params[:folder_id]) %>
 	<% else %>
 	<%= link_to "Back to List", root_url %>
 	<% end %>
