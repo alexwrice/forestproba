@@ -80,17 +80,21 @@ select#document_folder_ids {
    text-decoration:none; 
 }
 .folder  { 
-    background:url("folder.png") no-repeat scroll left center transparent; 
+/*    background:url("folder.png") no-repeat scroll left center transparent; 
+*/        background:url("http://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/16/Folder-icon.png") no-repeat scroll left center transparent; 
 } 
   
 .file { 
-    background:url("file.png") no-repeat scroll left center transparent; 
+/*    background:url("file.png") no-repeat scroll left center transparent; 
+*/
+      background:url("http://findicons.com/files/icons/1374/world_of_aqua_candybar/16/the_text_clipping_icon.png") no-repeat scroll left center transparent; 
+
 } 
 .folder.document_details:hover, .shared_folder.document_details:hover, .file.document_details:hover  { 
     border:1px solid #DFDFDF; 
 } 
 .folder.document_details:hover  { 
-    background:url("folder.png") no-repeat scroll left center #EFEFEF; 
+    background:url("http://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/16/Folder-icon.png") no-repeat scroll left center #EFEFEF; 
 } 
 .shared_folder  { 
     background:url("../images/shared_folder.png") no-repeat scroll left center transparent; 
@@ -99,7 +103,7 @@ select#document_folder_ids {
     background:url("../images/shared_folder.png") no-repeat scroll left center #EFEFEF; 
 } 
 .file.document_details:hover  { 
-    background:url("file.png") no-repeat scroll left center #EFEFEF; 
+    background:url("http://findicons.com/files/icons/1374/world_of_aqua_candybar/16/the_text_clipping_icon.png") no-repeat scroll left center #EFEFEF; 
 }
 
 #menu { 

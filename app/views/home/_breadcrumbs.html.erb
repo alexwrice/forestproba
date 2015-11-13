@@ -1,6 +1,6 @@
 <div class="breadcrumbs">         
     <% if @current_folder #checking if we are under any folder %> 
-        <%= link_to "GreenBox", root_url %> 
+        <%= link_to "Inicio", root_url %> 
         <% if @f %>  <!-- Pel cas de creació de carpeta -->
             <% @f.each_with_index do |folder, i| %> 
     	        <% if i != @f.length-1 %>
@@ -10,6 +10,6 @@
         <% end %>
          »  <%= @current_folder.name %> 
     <% else #if we are not under any folder%> 
-        GreenBox 
+        Inicio 
     <% end %> 
 </div>
