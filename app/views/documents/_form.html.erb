@@ -1,7 +1,7 @@
 <%= form_for @document, html: {multipart: true} do |f| %> 
 
 	<%= f.error_messages %> 
-	<p> 
+	<p class="full_width"> 
 		<%= f.label :uploaded_file, "File" %><br /> 
 		<%= f.file_field :uploaded_file %> 
 	</p> 
@@ -46,6 +46,6 @@
 	<% end %>
 	</div>
 
-	<p><%= f.submit "Upload" %></p> 
+	<p class="full_width"><%= f.submit "Upload" %></p> 
 
 <% end %>
