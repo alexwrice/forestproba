@@ -42,6 +42,27 @@ class DocumentsController < ApplicationController
   def create
     @document = current_user.documents.build(document_params)
 
+    #ALGORITMO
+    #para añadir ancestros de carpetas
+
+    ids_que_faltan = []
+    #buscamos los que faltan
+    @document.folder_ids.each do |id|
+      current_user.folders.find(id).ancestors.reverse.each do |folder| 
+        ids_que_faltan.push(folder.id)
+      end
+    end
+    ids_que_faltan.uniq
+
+    #añadimos los que faltan
+    #esto realmente sobra si el usuario sólo selecciona los últimos àrboles
+    ids_que_faltan.each do |id|
+      @document.folders << current_user.folders.find(id)
+    end
+
+
+
+
     if @document.save
       flash[:notice] = "Succesfully uploaded the file"
 

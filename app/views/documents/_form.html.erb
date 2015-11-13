@@ -6,8 +6,45 @@
 		<%= f.file_field :uploaded_file %> 
 	</p> 
 
-	<%= f.collection_select :folder_ids, current_user.folders.all, :id, :name, {}, 
-	{:multiple => true, class: 'select2'} %>
+	<div class = "selectors">
+	<% current_user.folders.roots.each do |folder| %>
+
+		<div class="tree_selector">
+			<div class ="title">
+			<h4><%= folder.name %></h4>
+
+			</div>
+			
+			<!-- Fer un array personalitzat -->
+			<%
+				folders_on_tree = []
+
+
+				folder.traverse { |child| 
+
+					name = ""
+
+					child.ancestors.each do |ancestor|
+						name += "--"
+					end
+					name += child.name
+
+					folders_on_tree.push([name, child.id])
+
+
+				}
+
+
+
+
+			%>
+
+			<%= f.select :folder_ids, folders_on_tree, {}, {:multiple => true, class: 'select2'} %>
+
+	</div>
+
+	<% end %>
+	</div>
 
 	<p><%= f.submit "Upload" %></p> 
 

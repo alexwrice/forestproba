@@ -8,6 +8,8 @@ class Document < ActiveRecord::Base
 	validates_attachment :uploaded_file, presence: true, size: { in: 0..10.megabytes }
 	do_not_validate_attachment_file_type :uploaded_file
 
+
+
 	def file_name 
 		uploaded_file_file_name 
 	end

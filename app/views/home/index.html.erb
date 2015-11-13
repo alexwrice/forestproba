@@ -33,6 +33,7 @@
 <div class="document_list"> 
 
 	<!-- Folders -->
+	
 	<% @folders.each do |folder| %> 
 	<div class="document_details folder"> 
 		<div class="file_name"><%= link_to folder.name, browse_path(folder, :f => @f) %></div> 

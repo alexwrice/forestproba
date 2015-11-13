@@ -19,6 +19,20 @@ body {
   font-size: 14px; 
 } 
 
+.tree_selector {
+    float: left;
+}
+
+.selectors{
+  padding: 10px;
+  margin: auto;
+}
+
+select#document_folder_ids {
+    width: 200px;
+    height: 150px;
+}
+
 .actions { 
     float:right; 
     font-size:11px; 
