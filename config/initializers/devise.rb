@@ -239,7 +239,7 @@ config.stretches = Rails.env.test? ? 1 : 10
 
 
   #MARC - CANVIS  --> http://blog.steveklabnik.com/posts/2011-12-11-devise-actioncontroller-routingerror-no-route-matches-get-slash-users-slash-sign-out
-  config.sign_out_via = :get
+  config.sign_out_via = :delete
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.

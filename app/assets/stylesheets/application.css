@@ -80,7 +80,7 @@ select#document_folder_ids {
    text-decoration:none; 
 }
 .folder  { 
-    background: url("folder.png") no-repeat scroll left center transparent; 
+    background:url("folder.png") no-repeat scroll left center transparent; 
 } 
   
 .file { 
@@ -90,7 +90,7 @@ select#document_folder_ids {
     border:1px solid #DFDFDF; 
 } 
 .folder.document_details:hover  { 
-    background:url("../images/folder.png") no-repeat scroll left center #EFEFEF; 
+    background:url("folder.png") no-repeat scroll left center #EFEFEF; 
 } 
 .shared_folder  { 
     background:url("../images/shared_folder.png") no-repeat scroll left center transparent; 
@@ -99,7 +99,7 @@ select#document_folder_ids {
     background:url("../images/shared_folder.png") no-repeat scroll left center #EFEFEF; 
 } 
 .file.document_details:hover  { 
-    background:url("../images/file.png") no-repeat scroll left center #EFEFEF; 
+    background:url("file.png") no-repeat scroll left center #EFEFEF; 
 }
 
 #menu { 
