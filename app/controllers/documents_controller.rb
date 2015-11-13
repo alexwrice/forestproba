@@ -67,7 +67,7 @@ class DocumentsController < ApplicationController
       flash[:notice] = "Succesfully uploaded the file"
 
       if @document.folders
-        redirect_to browse_path(1)
+        redirect_to root_url
       else
         redirect_to root_url
       end

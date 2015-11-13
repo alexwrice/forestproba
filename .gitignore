@@ -11,6 +11,11 @@
 *.jpeg
 *.jpg
 *.docx
+Gemfile
+Gemfile.lock
+db/schema.rb
+:Rails_root/*
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
