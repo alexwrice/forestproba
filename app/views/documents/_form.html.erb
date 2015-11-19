@@ -2,7 +2,6 @@
 
 	<%= f.error_messages %> 
 	<p class="full_width"> 
-		<%= f.label :uploaded_file, "File" %><br /> 
 		<%= f.file_field :uploaded_file %> 
 	</p> 
 
@@ -10,7 +9,7 @@
 	<% current_user.folders.roots.each do |folder| %>
 
 		<div class="tree_selector">
-			<div class ="title">
+			<div>
 			<h4><%= folder.name %></h4>
 
 			</div>
@@ -46,6 +45,6 @@
 	<% end %>
 	</div>
 
-	<p class="full_width"><%= f.submit "Upload" %></p> 
+	<p class="full_width"><%= f.submit "Subir" %></p> 
 
 <% end %>

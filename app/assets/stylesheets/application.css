@@ -14,10 +14,16 @@
  *= require_self
  */
 body { 
-  background-color: #EFEFEF; 
-  font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif; 
+/*  background-color: #EFEFEF; 
+*/  font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif; 
   font-size: 14px; 
 } 
+
+
+
+.title{
+  text-align: center;
+}
 
 .tree_selector {
     float: left;
@@ -31,6 +37,9 @@ body {
 
 p.full_width{
   width: 100px;
+  text-align: center;
+  margin: auto;
+  padding: 50px;
 }
 
 .tree_selector {
@@ -127,18 +136,60 @@ select#document_folder_ids {
 #top_menu{
   float:right;
 }
-#menu ul li a, #menu ul li a:visited{ 
-    display:block; 
+#menu ul#top_menu_clasificacions li a, #menu ul#top_menu_clasificacions li a:visited{ 
+/*    display:block; 
     padding:0 15px; 
     line-height:25px; 
     text-decoration:none; 
     color:#45759F; 
     background:#EFF8FF; 
-    border:1px solid #CFEBFF; 
+    border:1px solid #CFEBFF; */
+    display: block;
+    padding: 0 15px;
+    line-height: 30px;
+    text-decoration: none;
+    border-radius: 4px;
+    height: 30px;
+    vertical-align: middle;
+    color: #5A5959;
+    border: 1px solid #bfbfbf;
 } 
+
+#menu ul#top_menu li a, #menu ul#top_menu li a:visited{ 
+/*    display:block; 
+    padding:0 15px; 
+    line-height:25px; 
+    text-decoration:none; 
+    color:#45759F; 
+    background:#EFF8FF; 
+    border:1px solid #CFEBFF; */
+    display: block;
+    padding: 0 15px;
+    line-height: 30px;
+    text-decoration: none;
+    border-radius: 4px;
+    height: 30px;
+    vertical-align: middle;
+    color: #558E1F;
+    border: 1px solid #78C52F;
+} 
+
 #menu ul li a:hover, #menu ul li a:active{ 
-    background:#DFF1FF; 
-    border:1px solid #AFDDFF; 
+    background:#bfbfbf; 
+    color:#ffffff;
+    border:1px solid #bfbfbf; 
+}
+
+#menu ul li a.hide, #menu ul li .hide:hover, #menu ul li .hide:active{
+    color: white !important;
+    border: 1px solid #FFFFFF !important;
+    background:#ffffff; 
+    color:#ffffff;
+    cursor:default;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none; 
 }
 
 
@@ -200,8 +251,8 @@ select#document_folder_ids {
   margin: 0 auto; 
   background-color: #FFF; 
   padding: 20px 40px; 
-  border: solid 1px #BFBFBF;   
-} 
+/*  border: solid 1px #BFBFBF;   
+*/} 
 #login_user_status{ 
     float:right;     
 }

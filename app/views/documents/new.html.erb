@@ -1,13 +1,11 @@
-<% title "Upload a file" %> 
-
-<%= render :partial => "home/breadcrumbs" %>
+<h1 class="title">Upload a file</h1> 
 
 <%= render 'form' %> 
 
 <p>
 	<% if params[:folder_id] %>
-	<%= link_to "Back to  Folder", browse_path(params[:folder_id]) %>
+	<%= link_to "Volver a Carpeta", browse_path(params[:folder_id]) %>
 	<% else %>
-	<%= link_to "Back to List", root_url %>
+	<%= link_to "Volver", root_url %>
 	<% end %>
 </p>

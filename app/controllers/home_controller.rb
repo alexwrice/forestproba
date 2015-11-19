@@ -6,10 +6,10 @@ class HomeController < ApplicationController
 
 			# @folders = current_user.folders.roots  
 			@folders = []
-
+			@roots = []
 		    #show only root files which has no "folder_id" 
 		    # @documents = current_user.documents.where("folder_ids is NULL").order("uploaded_file_file_name desc")   
-		    @documents = current_user.documents 
+		    @documents = current_user.documents.order("updated_at desc")
 		end
 	end
 
@@ -21,16 +21,17 @@ class HomeController < ApplicationController
 		@clasificacions = current_user.folders.roots  
 
 		@f = params[:f]
-		if @f
-			 # Passem de strings a integers
-				# #GUARDAR NOMÉS LA ÚLTIMA CARPETA D'UN MATEIX ARBRE
-				# if current_user.folders.find(@f.last) == @current_folder.parent
-				# 	@f.pop
-				# end
+		if @f 
 
+
+				#Saltar entre arbres
+				# .parent == nil vol dir que es una clasificació!!
+				@f.pop if @current_folder.parent == nil && current_user.folders.find(@f.last).parent == nil
 
 				#Torna enrere
 				@f.pop(@f.length-@f.index("#{@current_folder.id}")) if @f.include?("#{@current_folder.id}")
+
+
 				@f.push(@current_folder.id)
 		else
 				@f=[@current_folder.id]
@@ -42,12 +43,26 @@ class HomeController < ApplicationController
 			#FILTREM RESULTATS
 			#Obtenim documents i seleccionem els que toquen
 			#Hem de passar les ids a numeros, son numbers
-			@documents = @current_folder.documents.order("uploaded_file_file_name desc").select{ |d|  @f.map(&:to_i).included_in?(d.folder_ids)}
+			@documents = @current_folder.documents.order("updated_at desc").select{ |d|  @f.map(&:to_i).included_in?(d.folder_ids)}
 
+			#FILTREM CARPETES
+			#Estem creuant arbres --> només apareixen carpetes on hi ha resultats
+			#No estem creuant arbres --> totes les carpetes
 			documents_ids = []
-			@documents.each{|d| documents_ids << d.id}
+			@documents.each{|d| documents_ids << d.id }
 
-			@folders = @current_folder.children.select { |f| f.document_ids.intersects_with?(documents_ids)}
+
+			#Només filtrem carpetes si hitop_menu_clasificacions ha més d'1 arbre
+			#roots => noms de les clasificacions
+			@roots = []
+			@f.each{|id| @roots << current_user.folders.find(id).root}
+			@roots = @roots.uniq
+
+			if @roots.length == 1
+				@folders = @current_folder.children
+			else
+				@folders = @current_folder.children.select { |f| f.document_ids.intersects_with?(documents_ids)}
+			end
 
 
 

@@ -3,32 +3,39 @@
 <p>File sharing web application you can't ignore.</p> 
 
 <% else %> 
-<div id="menu"> 
-	<ul id= "top_menu_clasificacions">    
-		<% @clasificacions.each do |clasificacio| %>
-			<li><%= link_to clasificacio.name, browse_path(clasificacio, :f => @f) %></li> 
-		<% end %>
-	</ul> 
-	<ul id= "top_menu">     
-		<% if @current_folder %> 
-		<li><%= link_to "Upload", new_sub_file_path(@current_folder) %></li> 
-		<li><%= link_to "New Folder", new_sub_folder_path(@current_folder) %></li> 
-		<% else %> 
-		<li><%= link_to "Upload", new_document_path %></li> 
-		<li><%= link_to "New Folder", new_folder_path %></li> 
-		<% end %> 
-
-	</ul>
-
-</div> 
 
 <%= render :partial => 'breadcrumbs' %>
 
 
+<div id="menu"> 
+	<ul id= "top_menu_clasificacions">    
+		<% @clasificacions.each do |clasificacio| %>
+
+			<% if @roots.include?(clasificacio) %>
+				<li><a class="hide"><%= clasificacio.name %></a></li> 
+			<% else %>
+				<li><%= link_to clasificacio.name, browse_path(clasificacio, :f => @f) %></li> 
+			<% end %>
+		<% end %>
+	</ul> 
+	<ul id= "top_menu">     
+		<% if @current_folder %> 
+		<li><%= link_to "Subir", new_sub_file_path(@current_folder) %></li> 
+		<li><%= link_to "Nueva Carpeta", new_sub_folder_path(@current_folder) %></li> 
+		<% else %> 
+		<li><%= link_to "Subir", new_document_path %></li> 
+		<li><%= link_to "Nuevo Árbol", new_folder_path %></li> 
+		<% end %> 
+	</ul>
+
+</div> 
+
+
+
 <div class="document_list_header"> 
-	<div class="file_name_header">File Name</div> 
-	<div class="file_size_header">Size</div> 
-	<div class="file_last_updated_header">Modified</div> 
+	<div class="file_name_header">Nombre</div> 
+	<div class="file_size_header">Tamaño</div> 
+	<div class="file_last_updated_header">Modificación</div> 
 </div> 
 <div class="document_list"> 
 
