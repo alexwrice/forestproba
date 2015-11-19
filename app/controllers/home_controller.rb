@@ -13,7 +13,7 @@ class HomeController < ApplicationController
 		end
 	end
 
-	
+
 
 	#this action is for viewing folders 
 	def browse 
@@ -23,39 +23,39 @@ class HomeController < ApplicationController
 		@f = params[:f]
 		if @f
 			 # Passem de strings a integers
-	  		# #GUARDAR NOMÉS LA ÚLTIMA CARPETA D'UN MATEIX ARBRE
-	  		# if current_user.folders.find(@f.last) == @current_folder.parent
-	  		# 	@f.pop
-	  		# end
-
-	  		#no funciona quan canvia d'arbre
-
-	  		#Torna enrere
-	  		if @f.include?("#{@current_folder.id}")
-	  			@f.pop(@f.length-@f.index("#{@current_folder.id}")) 
-	  		end
-	  		@f.push(@current_folder.id)
-	  	else
-	  		@f=[@current_folder.id]
-	  	end
+				# #GUARDAR NOMÉS LA ÚLTIMA CARPETA D'UN MATEIX ARBRE
+				# if current_user.folders.find(@f.last) == @current_folder.parent
+				# 	@f.pop
+				# end
 
 
-	  	if @current_folder
-
-	      #getting the folders which are inside this @current_folder 
-	      @folders = @current_folder.children 
-
-
-	      #FILTREM RESULTATS
-	      #Obtenim documents i seleccionem els que toquen
-	      #Hem de passar les ids a numeros, son numbers
-	      @documents = @current_folder.documents.order("uploaded_file_file_name desc").select{ |d|  @f.map(&:to_i).included_in?(d.folder_ids)}
-
-
-	      render :action => "index"
+				#Torna enrere
+				@f.pop(@f.length-@f.index("#{@current_folder.id}")) if @f.include?("#{@current_folder.id}")
+				@f.push(@current_folder.id)
 		else
-		  flash[:error] = "Don't be cheeky! Mind your own folders!"
-		  redirect_to root_url 
+				@f=[@current_folder.id]
+		end
+
+
+		if @current_folder
+
+			#FILTREM RESULTATS
+			#Obtenim documents i seleccionem els que toquen
+			#Hem de passar les ids a numeros, son numbers
+			@documents = @current_folder.documents.order("uploaded_file_file_name desc").select{ |d|  @f.map(&:to_i).included_in?(d.folder_ids)}
+
+			documents_ids = []
+			@documents.each{|d| documents_ids << d.id}
+
+			@folders = @current_folder.children.select { |f| f.document_ids.intersects_with?(documents_ids)}
+
+
+
+
+			render :action => "index"
+		else
+			flash[:error] = "Don't be cheeky! Mind your own folders!"
+			redirect_to root_url 
 		end
 	end
 end
