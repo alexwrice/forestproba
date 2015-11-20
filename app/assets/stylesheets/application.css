@@ -32,6 +32,8 @@ body {
 .selectors{
   padding: 10px;
   margin: auto;
+  overflow: auto;
+
 }
 
 
@@ -80,14 +82,6 @@ select#document_folder_ids {
     border:1px solid #FF8F93; 
 }
 
-.breadcrumbs { 
-   margin:10px 0; 
-   font-weight:bold; 
-} 
-.breadcrumbs a { 
-   color:#1D96EF; 
-   text-decoration:none; 
-}
 .folder  { 
 /*    background:url("folder.png") no-repeat scroll left center transparent; 
 */        background:url("http://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/16/Folder-icon.png") no-repeat scroll left center transparent; 
@@ -318,3 +312,73 @@ a {
 .error_messages ul {
   margin: 0;
 }
+
+
+
+input[type="submit"], input#document_uploaded_file {
+  font-size: 15px
+}
+/************** BREADCRUMBS ***************/
+
+.breadcrumbs { 
+  margin: 0px 0px 70px 0px;
+   font-weight:bold; 
+} 
+.breadcrumbs a { 
+   color:#000000; 
+   text-decoration:none; 
+}
+
+a.breadcrumbs_inicio{
+  margin:10px 0px;
+  color:#2688E4;
+}
+.breadcrumbs_inicio:hover{
+  color:#2370BA;
+  background-color: white;
+}
+.breadcrumbs_arrow{
+  margin:10px 10px;
+
+}
+
+#breadcrumbs_block{
+  float:left;
+}
+
+.breadcrumbs_title{
+  text-align: center;
+  padding: 2px 17px;
+  background-color: #fff;
+  border-radius: 4px 4px 0px 0px;
+
+
+}
+
+.breadcrumbs_subtitle{
+  text-align: center;
+  font-size: 9px;
+  background-color: #BFBFBF;
+  color: #FFFFFF;
+  padding: 0px 17px;
+  line-height: 14px;
+
+}
+
+ul#breadcrumbs_block{
+  float:left;
+  margin: 0px;
+  padding: 0px 0px;
+  list-style: none; 
+
+  border-color: #BFBFBF;
+  border-style: solid;
+  border-radius: 4px;
+  background-color: #BFBFBF;
+
+  border-width: 1px;
+}
+
+
+
+

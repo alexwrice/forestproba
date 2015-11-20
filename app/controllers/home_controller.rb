@@ -26,7 +26,8 @@ class HomeController < ApplicationController
 
 				#Saltar entre arbres
 				# .parent == nil vol dir que es una clasificació!!
-				@f.pop if @current_folder.parent == nil && current_user.folders.find(@f.last).parent == nil
+				# @f.pop if @current_folder.parent == nil && current_user.folders.find(@f.last).parent == nil
+				@f.pop if current_user.folders.find(@f.last).parent == nil
 
 				#Torna enrere
 				@f.pop(@f.length-@f.index("#{@current_folder.id}")) if @f.include?("#{@current_folder.id}")
