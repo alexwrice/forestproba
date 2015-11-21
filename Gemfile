@@ -6,7 +6,7 @@ gem 'rails', '4.2.4'
 gem 'nifty-generators', '~> 0.4.6'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.3.18'
-
+gem 'aws-sdk', '< 2.0'
 gem 'acts_as_tree', '~> 2.2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
