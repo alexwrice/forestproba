@@ -14,7 +14,6 @@
 Gemfile
 Gemfile.lock
 db/schema.rb
-config/amazon_s3.yml
 :Rails_root/*
 
 # Ignore all logfiles and tempfiles.
@@ -22,3 +21,4 @@ config/amazon_s3.yml
 !/log/.keep
 /tmp
 
+config/amazon_s3.yml
