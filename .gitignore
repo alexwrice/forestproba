@@ -14,9 +14,11 @@
 Gemfile
 Gemfile.lock
 db/schema.rb
+config/amazon_s3.yml
 :Rails_root/*
 
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 /tmp
+

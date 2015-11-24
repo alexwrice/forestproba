@@ -1,11 +1,11 @@
 development: 
-  access_key_id: pepito 
+  access_key_id: marquito 
   secret_access_key: grillo 
   
 staging: 
-  access_key_id: pepito 
+  access_key_id: marquito 
   secret_access_key: grillo 
   
 production: 
-  access_key_id: pepito 
+  access_key_id: marquito 
   secret_access_key: grillo
