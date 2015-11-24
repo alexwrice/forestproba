@@ -1,11 +1,11 @@
 development: 
-  access_key_id: AKIAIHBTQMGJG3WO2QMA 
-  secret_access_key: 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 
+  access_key_id: pepito 
+  secret_access_key: grillo 
   
 staging: 
-  access_key_id: AKIAIHBTQMGJG3WO2QMA 
-  secret_access_key: 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 
+  access_key_id: pepito 
+  secret_access_key: grillo 
   
 production: 
-  access_key_id: AKIAIHBTQMGJG3WO2QMA 
-  secret_access_key: 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
+  access_key_id: pepito 
+  secret_access_key: grillo
