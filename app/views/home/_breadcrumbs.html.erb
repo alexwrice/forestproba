@@ -6,6 +6,10 @@
 <div class="breadcrumbs">         
     <% if @current_folder #checking if we are under any folder %> 
         <%= link_to "Inicio", root_url, id: "breadcrumbs_block", :class => "breadcrumbs_inicio"%> 
+
+
+        <!-- El camí en el que estem-->
+
         <% if @f %>  <!-- Pel cas de creació de carpeta -->
             <% @f.each_with_index do |folder, i| %> 
                 <% if i != @f.length-1 %>
@@ -20,6 +24,9 @@
             <% end %> 
         <% end %>
         <a>
+
+        <!-- La carpeta en la que estem -->
+        
             <div id="breadcrumbs_block"  class="breadcrumbs_arrow"> » </div> 
             <ul id="breadcrumbs_block">
              <% if @current_folder.parent == nil %>
