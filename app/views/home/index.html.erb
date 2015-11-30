@@ -65,7 +65,7 @@
 
 		<div class="separador-carpetes-docs">
 		  <span style="background-color: white; position: relative; top: -0.5em; color:#BFBFBF">
-		    &nbsp; &darr; Todos los documentos
+		    &nbsp; <strong>&darr; </strong>Todos los documentos
 			
 			<% @f.each_with_index do |x, i| %>	
 					<!-- REFACTORING!!! -->
@@ -75,7 +75,7 @@
 				<%= "+" if i != @f.size-1 && current_user.folders.find(@f[i+1]).parent != nil%>
 			<% end %>
 	
-		    &darr; &nbsp;
+		    <strong>&darr;</strong> &nbsp;
 		  </span>
 		</div>
 

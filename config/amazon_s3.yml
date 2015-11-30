@@ -3,9 +3,10 @@ development:
   secret_access_key: grillo 
   
 staging: 
-  access_key_id: marquito 
+  access_key_id: pepito 
   secret_access_key: grillo 
   
 production: 
-  access_key_id: marquito 
+  access_key_id: pepito 
   secret_access_key: grillo
+
