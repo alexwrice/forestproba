@@ -42,40 +42,45 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     
-    render :action => 'new' if params[:document][:uploaded_file] == nil
+    unless params[:document][:uploaded_file] == nil
 
-    params[:document][:uploaded_file].each do |file|
-      @document = current_user.documents.build(:uploaded_file => file, 
-                                              :folder_ids => params[:document][:folder_ids], 
-                                              :user_id => params[:document][:user_id])
+      params[:document][:uploaded_file].each do |file|
+        @document = current_user.documents.build(:uploaded_file => file, 
+                                                :folder_ids => params[:document][:folder_ids], 
+                                                :user_id => params[:document][:user_id])
 
 
-      #ALGORITMO
-      #para añadir ancestros de carpetas
+        #ALGORITMO
+        #para añadir ancestros de carpetas
 
-      ids_que_faltan = []
-      #buscamos los que faltan
-      @document.folder_ids.each do |id|
-        current_user.folders.find(id).ancestors.reverse.each do |folder| 
-          ids_que_faltan.push(folder.id)
+        ids_que_faltan = []
+        #buscamos los que faltan
+        @document.folder_ids.each do |id|
+          current_user.folders.find(id).ancestors.reverse.each do |folder| 
+            ids_que_faltan.push(folder.id)
+          end
         end
+        ids_que_faltan.uniq
+
+        #añadimos los que faltan
+        #esto realmente sobra si el usuario sólo selecciona los últimos àrboles
+        ids_que_faltan.each do |id|
+          @document.folders << current_user.folders.find(id)
+        end
+
+
+        @document.save
+
+
       end
-      ids_que_faltan.uniq
 
-      #añadimos los que faltan
-      #esto realmente sobra si el usuario sólo selecciona los últimos àrboles
-      ids_que_faltan.each do |id|
-        @document.folders << current_user.folders.find(id)
-      end
+      flash[:notice] = "Succesfully uploaded the file"
+      redirect_to root_url
 
-
-      render :action => 'new' if !@document.save
-
-
+    else
+      render :new
     end
 
-    flash[:notice] = "Succesfully uploaded the file"
-    redirect_to root_url
 
   end
 
