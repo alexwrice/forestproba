@@ -65,7 +65,10 @@ class DocumentsController < ApplicationController
         #añadimos los que faltan
         #esto realmente sobra si el usuario sólo selecciona los últimos àrboles
         ids_que_faltan.each do |id|
-          @document.folders << current_user.folders.find(id)
+          # El unless es per evitar que si es posa a més d'un lloc en unmateix arbre
+          # no es repeteixi
+          @document.folders << current_user.folders.find(id) unless  @document.folder_ids.include?(id)
+
         end
 
 
