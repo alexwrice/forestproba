@@ -60,27 +60,7 @@
 		</div> 
 	</div> 
 	<% end %>
-	
-	<!-- Linea que separa carpetes de arxius -->
-	<% if @folders.count != 0 %>
 
-		<div class="separador-carpetes-docs">
-		  <span style="background-color: white; position: relative; top: -0.5em; color:#BFBFBF">
-		    &nbsp; <strong>&darr; </strong>Todos los documentos
-			
-			<% @f.each_with_index do |x, i| %>	
-					<!-- REFACTORING!!! -->
-				<!-- Aixó es complicat pq l'arrai de @f inclou carpetes clasificacions i carpetes, s'ha de fer Refactoring -->
-				<%= "en" if i == 0 && current_user.folders.find(x).parent != nil%>		
-				<strong><%= current_user.folders.find(x).name if current_user.folders.find(x).parent != nil%></strong>
-				<%= "+" if i != @f.size-1 && current_user.folders.find(@f[i+1]).parent != nil%>
-			<% end %>
-	
-		    <strong>&darr;</strong> &nbsp;
-		  </span>
-		</div>
-
-	<% end %>
 
 	<!-- documents -->
 	<% @documents.each do |document| %> 

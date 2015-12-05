@@ -44,7 +44,8 @@ class HomeController < ApplicationController
 			#FILTREM RESULTATS
 			#Obtenim documents i seleccionem els que toquen
 			#Hem de passar les ids a numeros, son numbers
-			@documents = @current_folder.documents.order("updated_at desc").select{ |d|  @f.map(&:to_i).included_in?(d.folder_ids)}
+
+			@documents = @current_folder.documents.order("updated_at desc").select{ |d|  @f.map(&:to_i).included_in?(d.folder_ids)}.select{ |d| !@current_folder.children.ids.intersects_with?(d.folder_ids)}
 
 			#FILTREM CARPETES
 			#Estem creuant arbres --> només apareixen carpetes on hi ha resultats
