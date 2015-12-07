@@ -50,8 +50,12 @@ class HomeController < ApplicationController
 			#FILTREM CARPETES
 			#Estem creuant arbres --> només apareixen carpetes on hi ha resultats
 			#No estem creuant arbres --> totes les carpetes
+
+			#REFACTOR
+			#CHAPUZA! per trobar les carpetes creuades es necesiten tots els doucments, no només els que apareixen aquí al mig, i s'ha de crear @documents_all
 			documents_ids = []
-			@documents.each{|d| documents_ids << d.id }
+			@documents_all = @current_folder.documents.order("updated_at desc").select{ |d|  @f.map(&:to_i).included_in?(d.folder_ids)}
+			@documents_all.each{|d| documents_ids << d.id }
 
 
 			#Només filtrem carpetes si hitop_menu_clasificacions ha més d'1 arbre
