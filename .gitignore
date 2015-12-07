@@ -21,4 +21,6 @@ db/schema.rb
 !/log/.keep
 /tmp
 
+#Secrets
 config/amazon_s3.yml
+config/secrets.yml
