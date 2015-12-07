@@ -22,3 +22,4 @@ db/schema.rb
 /tmp
 
 config/amazon_s3.yml
+config/secrets.yml
