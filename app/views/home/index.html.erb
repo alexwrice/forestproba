@@ -4,7 +4,7 @@
 
 <% else %> 
 
-<%= render :partial => 'breadcrumbs' %>
+<!-- render :partial => 'breadcrumbs' -->
 
 
 <div id="menu"> 
@@ -18,7 +18,7 @@
 			<% end %>
 		<% end %>
 	</ul> 
-	<ul id= "top_menu">     
+<!-- 	<ul id= "top_menu">     
 		<% if @current_folder %> 
 		<li><%= link_to "Subir", new_sub_file_path(@current_folder) %></li> 
 		<li><%= link_to "Nueva Carpeta", new_sub_folder_path(@current_folder) %></li> 
@@ -26,7 +26,7 @@
 		<li><%= link_to "Subir", new_document_path %></li> 
 		<li><%= link_to "Nuevo Árbol", new_folder_path %></li> 
 		<% end %> 
-	</ul>
+	</ul> -->
 
 </div> 
 

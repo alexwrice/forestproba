@@ -17,6 +17,7 @@ body {
 /*  background-color: #EFEFEF; 
 */  font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif; 
   font-size: 14px; 
+  margin: 0px;
 } 
 
 
@@ -110,10 +111,11 @@ select#document_folder_ids {
 }
 
 #menu { 
-    width:800px; 
-    padding:0 20px; 
+    position: fixed;
     margin:20px auto ; 
     overflow:hidden; 
+    top: 55px;
+
 } 
 #menu ul{ 
     padding:0; 
@@ -147,6 +149,8 @@ select#document_folder_ids {
     vertical-align: middle;
     color: #5A5959;
     border: 1px solid #bfbfbf;
+    background: white;
+
 } 
 
 #menu ul#top_menu li a, #menu ul#top_menu li a:visited{ 
@@ -184,8 +188,13 @@ select#document_folder_ids {
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
     user-select: none; 
+
 }
 
+.document_list_header{
+  margin-top: 120px;
+
+}
 
 .document_list_header, .document_list, .document_details { 
     width:800px; 
@@ -226,20 +235,57 @@ select#document_folder_ids {
 }
 
 .header_wrapper { 
-    width: 880px; 
-    margin: 0 auto; 
-    overflow:hidden; 
-    padding:20px 0; 
-    position:relative;
+/*    width: 880px; 
+*/    
+    width:100%;
+    background: white;
+    overflow: hidden;
+    padding: 17px 0px 13px 0px;
+    position: fixed;
+    border-bottom-style: solid;
+    border-bottom-color: #7FD321;
+    border-bottom-width: 1px;
+
 } 
 .logo a{ 
-    color: #338DCF; 
+    color: #78D24B; 
     float: left; 
-    font-size: 48px; 
-    font-weight: bold; 
-    text-shadow: 2px 2px 2px #FFFFFF; 
+    padding: 3px 0px 0px 25px;
+    font-family: Roboto;
+    font-size: 34px; 
     text-decoration:none; 
 } 
+
+.divider{
+  width: 1px;
+  background: #AEAEAE;
+  height: 30px;
+  margin-left: 20px;
+  float: left;
+}
+.searchbox input{
+  float: left;
+  font-size: 18px;
+  height: 30px;
+  border: none;
+  width: 50%;
+  padding: 0px 10px 4px 20px;
+}
+.lupa{
+  background:url("<%= asset_path('search.png') %>") no-repeat scroll left center transparent; 
+  float: right;
+  height: 30px;
+  width: 30px;
+  margin-right: 24px;
+}
+.new_file{
+  background:url("<%= asset_path('new_file2.png') %>") no-repeat scroll left center transparent; 
+  float: right;
+  height: 30px;
+  width: 30px;
+  margin-right: 14px;
+
+}
 #container { 
   width: 800px; 
   margin: 0 auto; 
@@ -248,7 +294,8 @@ select#document_folder_ids {
 /*  border: solid 1px #BFBFBF;   
 */} 
 #login_user_status{ 
-    float:right;     
+    float:right;  
+    padding: 5px 10px;   
 }
 
 a img {

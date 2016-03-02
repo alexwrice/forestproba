@@ -10,8 +10,15 @@
 <body>
 	<div class="header_wrapper"> 
 		<div class="logo"> 
-			<%= link_to "GreenBox", root_url %> 
+			<%= link_to "forest", root_url %> 
 		</div> 
+		<div class="searchbox"> 
+			<div class="divider">
+			</div>
+			<input type="text" name="fname" placeholder="Search...">
+
+		</div> 
+
 		<div id="login_user_status"> 
 			<% if user_signed_in? %> 
 			<%= current_user.email  %>  
@@ -24,6 +31,11 @@
 			<%= link_to 'Sign up', new_user_registration_path%> 
 			<% end %> 
 		</div>
+		<div class="new_file"></div>
+
+		<div class="lupa"> </div>
+
+
 	</div>
 	<div id="container">
 

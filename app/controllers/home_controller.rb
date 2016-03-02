@@ -22,21 +22,23 @@ class HomeController < ApplicationController
 
 		@f = params[:f]
 		if @f 
-
-
 				#Saltar entre arbres
 				# .parent == nil vol dir que es una clasificació!!
 				# @f.pop if @current_folder.parent == nil && current_user.folders.find(@f.last).parent == nil
-				@f.pop if current_user.folders.find(@f.last).parent == nil
+				if current_user.folders.find(@f.last).parent == nil
+					@f.pop
+				end
 
 				#Torna enrere
-				@f.pop(@f.length-@f.index("#{@current_folder.id}")) if @f.include?("#{@current_folder.id}")
-
+				if @f.include?("#{@current_folder.id}")	
+					@f.pop(@f.length-@f.index("#{@current_folder.id}")) 
+				end
 
 				@f.push(@current_folder.id)
 		else
 				@f=[@current_folder.id]
 		end
+
 
 
 		if @current_folder
@@ -45,7 +47,7 @@ class HomeController < ApplicationController
 			#Obtenim documents i seleccionem els que toquen
 			#Hem de passar les ids a numeros, son numbers
 
-			@documents = @current_folder.documents.order("updated_at desc").select{ |d|  @f.map(&:to_i).included_in?(d.folder_ids)}.select{ |d| !@current_folder.children.ids.intersects_with?(d.folder_ids)}
+			@documents = @current_folder.documents.order("updated_at desc").select{ |d| @f.map(&:to_i).included_in?(d.folder_ids)}.select{ |d| !@current_folder.children.ids.intersects_with?(d.folder_ids)}
 
 			#FILTREM CARPETES
 			#Estem creuant arbres --> només apareixen carpetes on hi ha resultats
