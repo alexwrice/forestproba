@@ -4,38 +4,38 @@
 
 <% else %> 
 
-<!-- render :partial => 'breadcrumbs' -->
-
+<!-- render :partial => 'breadcrumbs'
+ -->
 
 <div id="menu"> 
 	<ul id= "top_menu_clasificacions">    
 		<% @clasificacions.each do |clasificacio| %>
 
 			<% if @roots.include?(clasificacio) %>
-				<li><a class="hide"><%= clasificacio.name %></a></li> 
+				<li><a class="hidden_clasification"><%= clasificacio.name %></a></li> 
 			<% else %>
-				<li><%= link_to clasificacio.name, browse_path(clasificacio, :f => @f) %></li> 
+				<li><%= link_to clasificacio.name, browse_path(clasificacio, :path => @path) %></li> 
 			<% end %>
 		<% end %>
 	</ul> 
-<!-- 	<ul id= "top_menu">     
-		<% if @current_folder %> 
-		<li><%= link_to "Subir", new_sub_file_path(@current_folder) %></li> 
-		<li><%= link_to "Nueva Carpeta", new_sub_folder_path(@current_folder) %></li> 
-		<% else %> 
-		<li><%= link_to "Subir", new_document_path %></li> 
-		<li><%= link_to "Nuevo Árbol", new_folder_path %></li> 
-		<% end %> 
-	</ul> -->
 
 </div> 
 
 
+<div id= "left-menu">     
+	<% if @current_folder %> 
+		<div><p id="fab_button"><%= link_to "Subir", new_sub_file_path(@current_folder) %></p></div> 
+		<div><p id="fab_button"><%= link_to "Nueva Carpeta", new_sub_folder_path(@current_folder) %></p></div> 
+	<% else %> 
+		<div><p id="fab_button"><%= link_to "Subir", new_document_path %></p></div> 
+		<div><p id="fab_button"><%= link_to "Nuevo Árbol", new_folder_path %></p></div> 
+	<% end %> 
+</div> 
 
 <div class="document_list_header"> 
-	<div class="file_name_header">Nombre</div> 
-	<div class="file_size_header">Tamaño</div> 
-	<div class="file_last_updated_header">Modificación</div> 
+	<div class="file_name_header" id="file_header">Nombre</div> 
+	<div class="file_size_header"  id="file_header">Tamaño</div> 
+	<div class="file_last_updated_header"  id="file_header">Modificación</div> 
 </div> 
 <div class="document_list"> 
 
@@ -43,7 +43,7 @@
 	
 	<% @folders.each do |folder| %> 
 	<div class="document_details folder"> 
-		<div class="file_name"><%= link_to folder.name, browse_path(folder, :f => @f) %></div> 
+		<div class="file_name"><%= link_to folder.name, browse_path(folder, :path => @path) %></div> 
 		<div class="file_size">-</div> 
 		<div class="file_last_updated">-</div> 
 		<div class="actions"> 

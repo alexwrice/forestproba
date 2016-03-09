@@ -15,9 +15,13 @@
 		<div class="searchbox"> 
 			<div class="divider">
 			</div>
+			<% if @path %> 
+			<%= render :partial => 'breadcrumbs' %>
+			<% else %>				
 			<input type="text" name="fname" placeholder="Search...">
-
+			<% end %>
 		</div> 
+
 
 		<div id="login_user_status"> 
 			<% if user_signed_in? %> 
@@ -31,7 +35,7 @@
 			<%= link_to 'Sign up', new_user_registration_path%> 
 			<% end %> 
 		</div>
-		<div class="new_file"></div>
+ 		<a class="new_file" href="<%= new_document_path %>"></a> 
 
 		<div class="lupa"> </div>
 
@@ -40,12 +44,12 @@
 	<div id="container">
 
 <!-- 		<p class="notice"><%= notice %></p>  
- -->		<p class="alert"><%= alert %></p>  
-		<% flash.each do |name, msg| %>
-		<%= content_tag :div, msg, :id => "flash_#{name}" %>
-		<% end %>
-		<%= content_tag :h1, yield(:title) if show_title? %>
-		<%= yield %>
-	</div>
+-->		<p class="alert"><%= alert %></p>  
+<% flash.each do |name, msg| %>
+<%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+<%= content_tag :h1, yield(:title) if show_title? %>
+<%= yield %>
+</div>
 </body>
 </html>
