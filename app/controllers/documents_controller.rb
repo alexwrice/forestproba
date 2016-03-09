@@ -49,6 +49,7 @@ class DocumentsController < ApplicationController
                                                 :folder_ids => params[:document][:folder_ids], 
                                                 :user_id => params[:document][:user_id])
 
+        #[REFACTOR WITH FACTORY METHOD]
 
         #ALGORITMO
         #para añadir ancestros de carpetas

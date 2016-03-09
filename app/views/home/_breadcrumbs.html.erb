@@ -5,20 +5,22 @@
 
 <div class="breadcrumbs">         
     <% if @current_folder #checking if we are under any folder %> 
-        <%= link_to "Inicio", root_url, id: "breadcrumbs_block", :class => "breadcrumbs_inicio"%> 
-
 
         <!-- El camí en el que estem-->
+        <!-- TODO -->
+        <!-- El path hauria de tenir ja les carpetes preparades -->
 
-        <% if @f %>  <!-- Pel cas de creació de carpeta -->
-            <% @f.each_with_index do |folder, i| %> 
-                <% if i != @f.length-1 %>
-                    <a href="<%= browse_path(folder, :f => @f) %>">
-                        <div id="breadcrumbs_block" class="breadcrumbs_arrow"> » </div> 
-                        <ul id="breadcrumbs_block" href="<%= browse_path(folder, :f => @f) %>">
-                         <li class="breadcrumbs_title"> <%= current_user.folders.find(folder).name %> </li>    <!-- link_to current_user.folders.find(folder).name, browse_path(folder, :f => @f), id: "breadcrumbs_block" -->
+        
+        <% if @path %>  <!-- Pel cas de creació de carpeta -->
+            <% @path.each_with_index do |folder, i| %> 
+                <% if i != @path.length-1 %>
+                    <a href="<%= browse_path(folder, :path => @path) %>">
+                        <ul id="breadcrumbs_block" href="<%= browse_path(folder, :path => @path) %>">
+                         <li class="breadcrumbs_title"> <%= current_user.folders.find(folder).name %> </li>    <!-- link_to current_user.folders.find(folder).name, browse_path(folder, :path => @path), id: "breadcrumbs_block" -->
                          <li class="breadcrumbs_subtitle"> <%= current_user.folders.find(folder).root.name %></li>
                         </ul>
+                        <div id="breadcrumbs_block" class="breadcrumbs_arrow"> » </div> 
+
                      </a>
                 <% end %>
             <% end %> 
@@ -27,7 +29,6 @@
 
         <!-- La carpeta en la que estem -->
         
-            <div id="breadcrumbs_block"  class="breadcrumbs_arrow"> » </div> 
             <ul id="breadcrumbs_block">
              <% if @current_folder.parent == nil %>
                  <li class="breadcrumbs_title">&nbsp;</li>

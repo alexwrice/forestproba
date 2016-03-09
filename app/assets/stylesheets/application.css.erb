@@ -13,10 +13,11 @@
  *= require_tree .
  *= require_self
  */
-body { 
+ body { 
 /*  background-color: #EFEFEF; 
 */  font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif; 
-  font-size: 14px; 
+font-size: 14px; 
+margin: 0px;
 } 
 
 
@@ -26,7 +27,7 @@ body {
 }
 
 .tree_selector {
-    float: left;
+  float: left;
 }
 
 .selectors{
@@ -45,85 +46,91 @@ p.full_width{
 }
 
 .tree_selector {
-    float: left;
-    padding: 0px 10px;
-    margin: 0px 10px;
+  float: left;
+  padding: 0px 10px;
+  margin: 0px 10px;
 }
 
 select#document_folder_ids {
-    width: 200px;
-    height: 150px;
+  width: 200px;
+  height: 150px;
 }
 
 .actions { 
-    float:right; 
-    font-size:11px; 
+  float:right; 
+  font-size:11px; 
 } 
 .share, .rename, .download, .delete{ 
-    float:left;  
+  float:left;  
 } 
 .document_details .share a,.document_details .rename a,.document_details .download a,.document_details .delete a{ 
-    border: 1px solid #CFE9FF; 
-    font-size: 11px; 
-    margin-left: 5px; 
-    padding: 0 2px; 
+  border: 1px solid #CFE9FF; 
+  font-size: 11px; 
+  margin-left: 5px; 
+  padding: 0 2px; 
 } 
 .document_details .share a:hover,.document_details .rename a:hover,.document_details .download a:hover,.document_details .delete a:hover{ 
-    border:1px solid #8FCDFF; 
+  border:1px solid #8FCDFF; 
 } 
-  
+
 .document_details .delete a{ 
-    color:#BF0B12 !important; 
-    border:1px solid #FFCFD1; 
+  color:#BF0B12 !important; 
+  border:1px solid #FFCFD1; 
 } 
-  
+
 .document_details .delete a:hover{ 
-    color:#BF0B12; 
-    border:1px solid #FF8F93; 
+  color:#BF0B12; 
+  border:1px solid #FF8F93; 
 }
 
 .folder  { 
-    background:url("<%= asset_path('folder.png') %>") no-repeat scroll left center transparent; 
+  background:url("<%= asset_path('folder.png') %>") no-repeat scroll left center transparent; 
 /*        background:url("http://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/16/Folder-icon.png") no-repeat scroll left center transparent; 
 */} 
-  
+
 .file { 
-    background:url("<%= asset_path('file.png') %>") no-repeat scroll left center transparent; 
+  background:url("<%= asset_path('file.png') %>") no-repeat scroll left center transparent; 
 
 /*      background:url("http://findicons.com/files/icons/1374/world_of_aqua_candybar/16/the_text_clipping_icon.png") no-repeat scroll left center transparent; 
 */
 } 
 .folder.document_details:hover, .shared_folder.document_details:hover, .file.document_details:hover  { 
-    border:1px solid #DFDFDF; 
+  border:1px solid #DFDFDF; 
 } 
 .folder.document_details:hover  { 
-    background:url("<%= asset_path('folder.png') %>") no-repeat scroll left center #EFEFEF; 
+  background:url("<%= asset_path('folder.png') %>") no-repeat scroll left center #EFEFEF; 
 } 
 .shared_folder  { 
-    background:url("<%= asset_path('folder.png') %>") no-repeat scroll left center transparent; 
+  background:url("<%= asset_path('folder.png') %>") no-repeat scroll left center transparent; 
 } 
 .shared_folder.document_details:hover  { 
-    background:url("<%= asset_path('folder.png') %>") no-repeat scroll left center #EFEFEF; 
+  background:url("<%= asset_path('folder.png') %>") no-repeat scroll left center #EFEFEF; 
 } 
 .file.document_details:hover  { 
-    background:url("<%= asset_path('file.png') %>") no-repeat scroll left center #EFEFEF; 
+  background:url("<%= asset_path('file.png') %>") no-repeat scroll left center #EFEFEF; 
 }
 
 #menu { 
-    width:800px; 
-    padding:0 20px; 
-    margin:20px auto ; 
-    overflow:hidden; 
+  position: fixed;
+  margin:20px auto ; 
+  overflow:hidden; 
+  top: 60px;
+  width: 800px;
+  display: inline-block;
+  z-index: 3;
+  text-align: center;
+
 } 
 #menu ul{ 
-    padding:0; 
-    margin:0; 
+  padding:0; 
+  margin:0; 
+  display: inline-block;
 } 
 #menu ul li { 
-    list-style:none; 
-    float:left; 
-    display:block; 
-    margin-right:10px; 
+  list-style:none; 
+  float:left; 
+  display:block; 
+  margin-right:10px; 
   
   
 } 
@@ -142,14 +149,16 @@ select#document_folder_ids {
     padding: 0 15px;
     line-height: 30px;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 15px;
     height: 30px;
     vertical-align: middle;
     color: #5A5959;
     border: 1px solid #bfbfbf;
-} 
+    background: white;
 
-#menu ul#top_menu li a, #menu ul#top_menu li a:visited{ 
+  } 
+
+  #menu ul#top_menu li a, #menu ul#top_menu li a:visited{ 
 /*    display:block; 
     padding:0 15px; 
     line-height:25px; 
@@ -166,80 +175,179 @@ select#document_folder_ids {
     vertical-align: middle;
     color: #558E1F;
     border: 1px solid #78C52F;
-} 
+  } 
 
-#menu ul li a:hover, #menu ul li a:active{ 
+  #menu ul li a:hover, #menu ul li a:active{ 
     background:#bfbfbf; 
     color:#ffffff;
     border:1px solid #bfbfbf; 
-}
+  }
 
-#menu ul li a.hide, #menu ul li .hide:hover, #menu ul li .hide:active{
-    color: white !important;
-    border: 1px solid #FFFFFF !important;
-    background:#ffffff; 
-    color:#ffffff;
+  #menu ul li a.hidden_clasification, #menu ul li .hidden_clasification:hover, #menu ul li .hidden_clasification:active{
+
+
+    opacity: 0.2;
     cursor:default;
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
     user-select: none; 
+
+  }
+
+
+  div#left-menu {
+    position: fixed;
+    top: 170px;
+    left: 90px;
+    list-style-type: none;
+ 
+  }
+
+  #left-menu div{
+   margin-bottom: 40px;
+   background: white;
+   border-radius: 50%;
+   height: 60px;
+   width: 60px;
+
+   vertical-align: middle;
+   display: table;
+
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+ p#fab_button{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#fab_button a{
+  color:gray;
 }
 
 
+.document_list_header{
+  border-bottom: 2px solid #e5e5e5;
+  padding-bottom: 5px;
+  padding-top: 110px;
+  position: fixed;
+  background: white;
+  z-index: 2;
+
+
+}
+
 .document_list_header, .document_list, .document_details { 
-    width:800px; 
-    font-weight:bold; 
-    font-size:12px; 
-    overflow:hidden; 
-  
+  width:800px; 
+  font-weight:bold; 
+  font-size:12px; 
+  overflow:hidden; 
+
 } 
+#file_header{
+  color:#A7A7A7;
+}
+.file_name_header{
+  width:390px !important;
+  padding-left: 0px !important;
+}
 .file_name_header, .file_name { 
-    width:350px; 
-    float:left; 
-    padding-left: 40px;
+  width:350px; 
+  float:left; 
+  padding-left: 40px;
 } 
+
+.file_size_header{
+  width:100px !important;
+  padding-left: 0px !important;
+}
 .file_size_header, .file_size { 
-    width:100px; 
-    float:left; 
+  width:100px; 
+  float:left; 
 } 
+
+.file_last_upadated_header{
+  width:150px !important;
+  padding-left: 0px !important;
+}
 .file_last_updated_header, .file_last_updated { 
-    width:150px; 
-    float:left; 
+  width:150px; 
+  float:left; 
 } 
 .document_list { 
-    padding:20px 0; 
+  padding:7 hpx 0; 
+  margin-top: 150px;
 } 
 .document_details { 
-    font-weight:normal; 
-    height:40px; 
-    line-height:40px; 
-    border:1px solid #FFF; 
-    width:790px; 
-    color:#4F4F4F; 
+  font-weight:normal; 
+  height:40px; 
+  line-height:40px; 
+  border:1px solid #FFF; 
+  width:790px; 
+  color:#4F4F4F; 
 } 
-  
+
 .document_details a, .document_details a:visited { 
-    text-decoration:none; 
-    color:#1D96EF; 
-    font-size:12px; 
+  text-decoration:none; 
+  color:#1D96EF; 
+  font-size:12px; 
 }
 
 .header_wrapper { 
-    width: 880px; 
-    margin: 0 auto; 
-    overflow:hidden; 
-    padding:20px 0; 
-    position:relative;
+/*    width: 880px; 
+*/    
+width:100%;
+background: white;
+overflow: hidden;
+padding: 17px 0px 13px 0px;
+position: fixed;
+border-bottom-style: solid;
+border-bottom-color:  rgba(0,0,0,.15);
+border-bottom-width: 1px;
+z-index: 4;
+
 } 
 .logo a{ 
-    color: #338DCF; 
-    float: left; 
-    font-size: 48px; 
-    font-weight: bold; 
-    text-shadow: 2px 2px 2px #FFFFFF; 
-    text-decoration:none; 
+  color: #78D24B; 
+  float: left; 
+  padding: 3px 0px 0px 25px;
+  font-family: Roboto;
+  font-size: 34px; 
+  text-decoration:none; 
 } 
+
+.divider{
+  width: 1px;
+  background: #AEAEAE;
+  height: 30px;
+  margin-left: 20px;
+  float: left;
+}
+.searchbox input{
+  float: left;
+  font-size: 18px;
+  height: 30px;
+  border: none;
+  width: 50%;
+  padding: 0px 10px 0px 20px;
+}
+.lupa{
+  background:url("<%= asset_path('search.png') %>") no-repeat scroll left center transparent; 
+  float: right;
+  height: 30px;
+  width: 30px;
+  margin-right: 24px;
+}
+.new_file{
+  background:url("<%= asset_path('new_file2.png') %>") no-repeat scroll left center transparent; 
+  float: right;
+  height: 30px;
+  width: 30px;
+  margin-right: 14px;
+
+}
 #container { 
   width: 800px; 
   margin: 0 auto; 
@@ -248,7 +356,8 @@ select#document_folder_ids {
 /*  border: solid 1px #BFBFBF;   
 */} 
 #login_user_status{ 
-    float:right;     
+  float:right;  
+  padding: 5px 10px;   
 }
 
 a img {
@@ -274,6 +383,11 @@ a {
 #flash_notice {
   background-color: #CFC;
   border: solid 1px #6C6;
+  z-index: 6;
+  position: fixed;
+  bottom: 10px;
+  width: 800px;
+  text-align: center;
 }
 
 #flash_error, #flash_alert {
@@ -321,12 +435,14 @@ input[type="submit"], input#document_uploaded_file {
 /************** BREADCRUMBS ***************/
 
 .breadcrumbs { 
-  margin: 0px 0px 70px 0px;
-   font-weight:bold; 
+ font-weight:bold; 
+ position: fixed;
+ left: 150px;
+ top: 12px;
 } 
 .breadcrumbs a { 
-   color:#000000; 
-   text-decoration:none; 
+ color:#000000; 
+ text-decoration:none; 
 }
 
 a.breadcrumbs_inicio{
