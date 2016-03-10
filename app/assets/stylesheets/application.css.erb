@@ -123,13 +123,15 @@ select#document_folder_ids {
 
 #menu { 
   position: fixed;
-  margin:20px auto ; 
-  overflow:hidden; 
+  margin: 20px auto;
+  overflow: hidden;
   top: 60px;
-  width: 800px;
+  width: 900px;
   display: inline-block;
   z-index: 3;
   text-align: center;
+  left: 50%;
+  transform: translate(-50%, 0);
 
 } 
 #menu ul{ 
@@ -141,7 +143,7 @@ select#document_folder_ids {
   list-style:none; 
   float:left; 
   display:block; 
-  margin-right:10px; 
+  margin: 0px 7px;
   background: white;
   border-radius: 15px;
   height: 30px;
@@ -157,10 +159,11 @@ select#document_folder_ids {
 }
 #menu ul#top_menu_clasificacions li a, #menu ul#top_menu_clasificacions li a:visited{ 
 
-    padding: 0 15px;
-    line-height: 30px;
-    text-decoration: none;
-
+  line-height: 30px;
+  text-decoration: none;
+  color: #5A5959;
+  border: white;
+  background: white;
 
   } 
 
@@ -313,6 +316,7 @@ border-bottom-style: solid;
 border-bottom-color:  rgba(0,0,0,.15);
 border-bottom-width: 1px;
 z-index: 4;
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.01);
 
 } 
 .logo a{ 
@@ -355,7 +359,7 @@ z-index: 4;
 
 }
 #container { 
-  width: 800px; 
+  width: 880px; 
   margin: 0 auto; 
   background-color: #FFF; 
   padding: 20px 40px; 
