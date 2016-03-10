@@ -145,14 +145,16 @@ select#document_folder_ids {
   display:block; 
   margin: 0px 7px;
   background: white;
-  border-radius: 15px;
+  border-radius: 8px;
   height: 30px;
   vertical-align: middle;
   color: #5A5959;
   border: 1px solid #bfbfbf;
-  padding: 7px 10px 10px 10px;
-  height: 45px;
-  
+  padding: 6px 12px;
+  height: 30px;
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;  
 } 
 #top_menu{
   float:right;
@@ -161,9 +163,9 @@ select#document_folder_ids {
 
   line-height: 30px;
   text-decoration: none;
-  color: #5A5959;
+  color: white;
   border: white;
-  background: white;
+  background: #d9534f;
 
   } 
 
@@ -359,7 +361,7 @@ box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.01);logi
 
 }
 #container { 
-  width: 880px; 
+  width: 800px; 
   margin: 0 auto; 
   background-color: #FFF; 
   padding: 20px 40px; 
@@ -513,5 +515,15 @@ ul#breadcrumbs_block{
   text-align: center;
   margin: 25px 5px 15px 5px;
   font-weight: normal;
+}
+
+img.grid{
+  z-index: 10;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0.3;
+  width: 1050px;
+  display:none;
 }
 
