@@ -12,9 +12,34 @@
 		<% @clasificacions.each do |clasificacio| %>
 
 			<% if @roots.include?(clasificacio) %>
-				<li><a class="hidden_clasification"><%= clasificacio.name %></a></li> 
+				<li>
+
+
+
+				<a class="hidden_clasification"><%= clasificacio.name %></a></li> 
 			<% else %>
-				<li><%= link_to clasificacio.name, browse_path(clasificacio, :path => @path) %></li> 
+				
+				<li href=>
+				<% case clasificacio.name %>
+				<% when "Proyectos" %>
+					<span class="glyphicon glyphicon-folder-open"></span>
+				<% when "Departamentos" %>
+					<span class="glyphicon glyphicon-tent"></span>
+				<% when "Equipo" %>
+					<span class="glyphicon glyphicon-user"></span>
+				<% when "Personas" %>
+					<span class="glyphicon glyphicon-user"></span>
+				<% when "Procesos" %>
+					<span class="glyphicon glyphicon-cog"></span>
+				<% when "Espacio" %>
+					<span class="glyphicon glyphicon-map-marker"></span>
+				<% when "Tipo de Documento" %>
+					<span class="glyphicon glyphicon-file"></span>
+				<% when "Fecha" %>
+					<span class="glyphicon glyphicon-calendar"></span>
+				<%end%>
+
+				<%= link_to clasificacio.name, browse_path(clasificacio, :path => @path) %></li> 
 			<% end %>
 		<% end %>
 	</ul> 
