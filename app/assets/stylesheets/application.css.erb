@@ -137,6 +137,13 @@ select#document_folder_ids {
 #top_menu{
   float:right;
 }
+
+ul#top_menu_clasificacions li a:hover{
+  color:#218041 !important;
+  background: #78D24B !important;
+  border-color: #218041 !important;
+
+}
 #menu ul#top_menu_clasificacions li a, #menu ul#top_menu_clasificacions li a:visited{ 
 /*    display:block; 
     padding:0 15px; 
@@ -307,6 +314,7 @@ border-bottom-style: solid;
 border-bottom-color:  rgba(0,0,0,.15);
 border-bottom-width: 1px;
 z-index: 4;
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.06);
 
 } 
 .logo a{ 
@@ -358,6 +366,8 @@ z-index: 4;
 #login_user_status{ 
   float:right;  
   padding: 5px 10px;   
+  width: 215px;
+  font-size: smaller;
 }
 
 a img {
@@ -501,5 +511,15 @@ ul#breadcrumbs_block{
   text-align: center;
   margin: 25px 5px 15px 5px;
   font-weight: normal;
+}
+
+img.grid{
+  z-index: 10;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0.3;
+  width: 1050px;
+
 }
 
