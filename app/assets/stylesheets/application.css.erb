@@ -151,7 +151,7 @@ select#document_folder_ids {
   color: #5A5959;
   border: 1px solid #bfbfbf;
   padding: 6px 12px;
-  height: 30px;
+  height: 25px;
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;  
@@ -168,11 +168,10 @@ ul#top_menu_clasificacions li a:hover{
 }
 #menu ul#top_menu_clasificacions li a, #menu ul#top_menu_clasificacions li a:visited{ 
 
-  line-height: 30px;
+  line-height: 25px;
   text-decoration: none;
   color: white;
   border: white;
-  background: #d9534f;
 
   } 
 
@@ -325,11 +324,7 @@ border-bottom-style: solid;
 border-bottom-color:  rgba(0,0,0,.15);
 border-bottom-width: 1px;
 z-index: 4;
-<<<<<<< HEAD
-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.06);
-=======
-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.01);logi
->>>>>>> bootstrap
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.01);
 
 } 
 .logo a{ 
@@ -371,8 +366,16 @@ box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.01);logi
   height: 30px;
   width: 30px;
   margin-right: 14px;
-
 }
+
+.new_folder_icon{
+  background:url("<%= asset_path('new_folder.png') %>") no-repeat scroll left center transparent; 
+  float: right;
+  height: 30px;
+  width: 30px;
+  margin-right: 14px;
+}
+
 #container { 
   width: 800px; 
   margin: 0 auto; 

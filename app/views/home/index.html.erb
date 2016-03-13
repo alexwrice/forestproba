@@ -11,56 +11,71 @@
 	<ul id= "top_menu_clasificacions">    
 		<% @clasificacions.each do |clasificacio| %>
 
-			<% if @roots.include?(clasificacio) %>
-				<li>
-				
-				<% case clasificacio.name %>
-				<% when "Proyectos" %>
-					<span class="glyphicon glyphicon-folder-open"></span>
-				<% when "Departamentos" %>
-					<span class="glyphicon glyphicon-tent"></span>
-				<% when "Departamento" %>
-					<span class="glyphicon glyphicon-tent"></span>
-				<% when "Equipo" %>
-					<span class="glyphicon glyphicon-user"></span>
-				<% when "Personas" %>
-					<span class="glyphicon glyphicon-user"></span>
-				<% when "Procesos" %>
-					<span class="glyphicon glyphicon-cog"></span>
-				<% when "Espacio" %>
-					<span class="glyphicon glyphicon-map-marker"></span>
-				<% when "Tipo de Documento" %>
-					<span class="glyphicon glyphicon-file"></span>
-				<% when "Fecha" %>
-					<span class="glyphicon glyphicon-calendar"></span>
-				<%end%>
+			<% if @roots.include?(clasificacio) %>				
+			
+			<% case clasificacio.name %>
+			<% when "Proyectos" %>
+				<li style="background-color: #84D400;   border-color: #73B000;">
+				<span class="glyphicon glyphicon-folder-open"></span>
+			<% when "Departamentos" %>
+				<li style="background-color: #F9AE5B;   border-color: #D4953D;">
+				<span class="glyphicon glyphicon-tent"></span>
+			<% when "Departamento" %>
+				<li style="background-color: #F9AE5B;   border-color: #D4953D;">	
+				<span class="glyphicon glyphicon-tent"></span>
+			<% when "Equipo" %>
+				<li style="background-color: #EFE100;   border-color: #E0D500;">
+				<span class="glyphicon glyphicon-user"></span>
+			<% when "Personas" %>
+				<li style="background-color: #EFE100;   border-color: #E0D500;">
+				<span class="glyphicon glyphicon-user"></span>
+			<% when "Procesos" %>
+				<li style="background-color: #4E8EE9;   border-color: #4C82E0;">
+				<span class="glyphicon glyphicon-cog"></span>
+			<% when "Espacio" %>
+				<li style="background-color: #A4CDE6;   border-color: #97BAD4;">
+				<span class="glyphicon glyphicon-map-marker"></span>
+			<% when "Tipo de Documento" %>
+				<li style="background-color: #F77F77;   border-color: #E2776C;">
+				<span class="glyphicon glyphicon-file"></span>
+			<% when "Fecha" %>
+				<li style="background-color: #E5A0A1;   border-color: #D79797;">
+				<span class="glyphicon glyphicon-calendar"></span>
+			<%end%>
 
 
 				<a class="hidden_clasification"><%= clasificacio.name %></a></li> 
 			<% else %>
 				
-				<li href=>
-
-				<% case clasificacio.name %>
-				<% when "Proyectos" %>
-					<span class="glyphicon glyphicon-folder-open"></span>
-				<% when "Departamentos" %>
-					<span class="glyphicon glyphicon-tent"></span>
-				<% when "Departamento" %>
-					<span class="glyphicon glyphicon-tent"></span>
-				<% when "Equipo" %>
-					<span class="glyphicon glyphicon-user"></span>
-				<% when "Personas" %>
-					<span class="glyphicon glyphicon-user"></span>
-				<% when "Procesos" %>
-					<span class="glyphicon glyphicon-cog"></span>
-				<% when "Espacio" %>
-					<span class="glyphicon glyphicon-map-marker"></span>
-				<% when "Tipo de Documento" %>
-					<span class="glyphicon glyphicon-file"></span>
-				<% when "Fecha" %>
-					<span class="glyphicon glyphicon-calendar"></span>
-				<%end%>
+			<% case clasificacio.name %>
+			<% when "Proyectos" %>
+				<li style="background-color: #84D400;   border-color: #73B000;">
+				<span class="glyphicon glyphicon-folder-open"></span>
+			<% when "Departamentos" %>
+				<li style="background-color: #F9AE5B;   border-color: #D4953D;">
+				<span class="glyphicon glyphicon-tent"></span>
+			<% when "Departamento" %>
+				<li style="background-color: #F9AE5B;   border-color: #D4953D;">	
+				<span class="glyphicon glyphicon-tent"></span>
+			<% when "Equipo" %>
+				<li style="background-color: #EFE100;   border-color: #E0D500;">
+				<span class="glyphicon glyphicon-user"></span>
+			<% when "Personas" %>
+				<li style="background-color: #EFE100;   border-color: #E0D500;">
+				<span class="glyphicon glyphicon-user"></span>
+			<% when "Procesos" %>
+				<li style="background-color: #4E8EE9;   border-color: #4C82E0;">
+				<span class="glyphicon glyphicon-cog"></span>
+			<% when "Espacio" %>
+				<li style="background-color: #A4CDE6;   border-color: #97BAD4;">
+				<span class="glyphicon glyphicon-map-marker"></span>
+			<% when "Tipo de Documento" %>
+				<li style="background-color: #F77F77;   border-color: #E2776C;">
+				<span class="glyphicon glyphicon-file"></span>
+			<% when "Fecha" %>
+				<li style="background-color: #E5A0A1;   border-color: #D79797;">
+				<span class="glyphicon glyphicon-calendar"></span>
+			<%end%>
 
 				<%= link_to clasificacio.name, browse_path(clasificacio, :path => @path) %></li> 
 			<% end %>
@@ -72,11 +87,12 @@
 
 <div id= "left-menu">     
 	<% if @current_folder %> 
-		<div><p id="fab_button"><%= link_to "Subir", new_sub_file_path(@current_folder) %></p></div> 
-		<div><p id="fab_button"><%= link_to "Nueva Carpeta", new_sub_folder_path(@current_folder) %></p></div> 
+		<div><p id="fab_button"><a class="new_file" style="margin-right: 11px;" href="<%= new_sub_file_path(@current_folder) %>"></a></p></div> 
+		<div><p id="fab_button"><a class="new_folder_icon" style="margin-right: 13px;" href="<%= new_sub_folder_path(@current_folder) %>"></a></p></div> 
 	<% else %> 
-		<div><p id="fab_button"><%= link_to "Subir", new_document_path %></p></div> 
-		<div><p id="fab_button"><%= link_to "Nuevo Árbol", new_folder_path %></p></div> 
+		<div><p id="fab_button"><a class="new_file" style="margin-right: 11px;" href="<%= new_document_path %>"></a></p></div> 
+		<div><p id="fab_button"><a class="new_folder_icon" style="margin-right: 13px;" href="<%= new_folder_path %>"></a></p></div> 
+
 	<% end %> 
 </div> 
 
